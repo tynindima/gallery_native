@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import {
   StyleSheet,
   Image,
@@ -7,14 +8,15 @@ import {
   Dimensions,
   Text
 } from 'react-native';
+import { setFullPhoto } from '../store/actionCreators';
 
-export const Photo = (props) => {
-  const { photo, getFullPhoto } = props;
+const Photo = (props) => {
+  const { photo, onFullPhoto } = props;
   const { user } = photo;
 
   return (
     <View style={styles.imageWrap}>
-      <TouchableWithoutFeedback onPress={() => getFullPhoto(photo.urls.full)}>
+      <TouchableWithoutFeedback onPress={() => onFullPhoto(photo.urls.full)}>
         <Image
           style={styles.image}
           source={{ uri: photo.urls.small }}
@@ -42,3 +44,9 @@ const styles = StyleSheet.create({
     backgroundColor: 'grey',
   },
 });
+
+const mapDispatchToProps = {
+  onFullPhoto: setFullPhoto,
+};
+
+export default connect(null, mapDispatchToProps)(Photo);

@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import {
   View,
   Image,
@@ -7,8 +8,9 @@ import {
   Modal,
   TouchableWithoutFeedback
 } from 'react-native';
+import { setIsModal } from '../store/actionCreators';
 
-export const PhotoFullScreen = (props) => {
+const PhotoFullScreen = (props) => {
   const { photo, onModal, isModal } = props;
 
   return (
@@ -35,3 +37,15 @@ const styles = StyleSheet.create({
     width: (Dimensions.get('window').width),
   },
 });
+
+const mapStateToProps = (state) => ({
+  photo: state.fullPhoto,
+  isModal: state.isModal,
+
+});
+
+const mapDispatchToProps = {
+  onModal: setIsModal,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(PhotoFullScreen);
