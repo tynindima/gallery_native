@@ -11,12 +11,12 @@ import {
 import { setFullPhoto, setIsModal } from '../store/actionCreators';
 
 const Photo = (props) => {
-  const { photo, onFullPhoto, onIsModal } = props;
+  const { photo, onFullPhoto, navigation } = props;
   const { user } = photo;
 
   const handlerIsModal = (singlePhoto) => {
     onFullPhoto(singlePhoto);
-    onIsModal(true);
+    navigation.navigate('Photo');
   };
 
   return (

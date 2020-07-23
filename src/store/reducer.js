@@ -1,12 +1,10 @@
 import {
   SET_PHOTOS,
-  SET_IS_MODAL,
   SET_FULL_PHOTO
 } from './types';
 
 const initialState = {
   photos: [],
-  isModal: false,
   fullPhoto: '',
 };
 
@@ -16,11 +14,6 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         photos: action.payload,
-      };
-    case SET_IS_MODAL:
-      return {
-        ...state,
-        isModal: action.payload,
       };
     case SET_FULL_PHOTO:
       return {
