@@ -8,28 +8,22 @@ import {
   Dimensions
 } from 'react-native';
 
-import { getPhotos } from '../getData';
-import { setPhotos } from '../store/actionCreators';
 import Photo from '../components/Photo';
 import { Navbar } from '../components/Navbar';
 import PhotoFullScreen from '../components/PhotoFullScreen';
+import { getPhotosFromServer} from '../store/actionCreators';
 
 const MainScreen = (props) => {
   const {
     photos,
-    onPhotos,
+    onPhotoFromServer,
   } = props;
-
-  const getPhotoHandler = async () => {
-    const photosFromServer = await getPhotos();
-    onPhotos(photosFromServer);
-  };
 
   return (
     <View>
       <Navbar title="Gallery" />
       <View style={styles.buttonContainer}>
-        <Button title="Get photo" onPress={getPhotoHandler} />
+        <Button title="Get photo" onPress={onPhotoFromServer} />
       </View>
       <View style={styles.container}>
         <ScrollView>
@@ -45,7 +39,7 @@ const MainScreen = (props) => {
 
 const styles = StyleSheet.create({
   container: {
-    height: (Dimensions.get('window').height) - 85,
+    height: (Dimensions.get('window').height) - 75,
   },
   buttonContainer: {
     marginVertical: 1,
@@ -55,11 +49,11 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = (state) => ({
-  photos: state.phoros,
+  photos: state.photos,
 });
 
 const mapDispatchToProps = {
-  onPhotos: setPhotos,
+  onPhotoFromServer: getPhotosFromServer,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainScreen);

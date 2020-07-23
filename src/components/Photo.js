@@ -8,15 +8,20 @@ import {
   Dimensions,
   Text
 } from 'react-native';
-import { setFullPhoto } from '../store/actionCreators';
+import { setFullPhoto, setIsModal } from '../store/actionCreators';
 
 const Photo = (props) => {
-  const { photo, onFullPhoto } = props;
+  const { photo, onFullPhoto, onIsModal } = props;
   const { user } = photo;
+
+  const handlerIsModal = (singlePhoto) => {
+    onFullPhoto(singlePhoto);
+    onIsModal(true);
+  };
 
   return (
     <View style={styles.imageWrap}>
-      <TouchableWithoutFeedback onPress={() => onFullPhoto(photo.urls.full)}>
+      <TouchableWithoutFeedback onPress={() => handlerIsModal(photo.urls.full)}>
         <Image
           style={styles.image}
           source={{ uri: photo.urls.small }}
@@ -47,6 +52,7 @@ const styles = StyleSheet.create({
 
 const mapDispatchToProps = {
   onFullPhoto: setFullPhoto,
+  onIsModal: setIsModal,
 };
 
 export default connect(null, mapDispatchToProps)(Photo);

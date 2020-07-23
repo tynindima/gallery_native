@@ -1,4 +1,4 @@
-export {
+import {
   SET_PHOTOS,
   SET_IS_MODAL,
   SET_FULL_PHOTO

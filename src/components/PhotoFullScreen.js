@@ -30,7 +30,12 @@ const PhotoFullScreen = (props) => {
 
 const styles = StyleSheet.create({
   screen: {
-    flex: 1,
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    right: 0,
+    left: 0,
+    backgroundColor: 'white',
   },
   image: {
     height: (Dimensions.get('window').height),
