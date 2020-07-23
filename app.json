@@ -21,6 +21,8 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "it's just a gallery that gets a photo from unsplash",
+    "githubUrl": "https://github.com/tynindima/gallery_native"
   }
 }
