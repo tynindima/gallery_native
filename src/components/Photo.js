@@ -8,7 +8,7 @@ import {
   Dimensions,
   Text
 } from 'react-native';
-import { setFullPhoto, setIsModal } from '../store/actionCreators';
+import { setFullPhoto } from '../store/actionCreators';
 
 const Photo = (props) => {
   const { photo, onFullPhoto, navigation } = props;
@@ -52,7 +52,6 @@ const styles = StyleSheet.create({
 
 const mapDispatchToProps = {
   onFullPhoto: setFullPhoto,
-  onIsModal: setIsModal,
 };
 
 export default connect(null, mapDispatchToProps)(Photo);

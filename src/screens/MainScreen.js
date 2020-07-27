@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import {
   StyleSheet,
   View,
-  Button,
   ScrollView,
   Dimensions
 } from 'react-native';
